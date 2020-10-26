@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+:root {
+    --bg-gradient: linear-gradient(
+        to bottom,
+        hsl(273, 75%, 66%),
+        hsl(240, 73%, 65%)
+    );
+    --primaryBlue: hsl(238, 29%, 16%);
+    --primaryRed: hsl(14, 88%, 65%);
+    --grayBlue-1: hsl(237, 12%, 33%);
+    --grayBlue-2: hsl(240, 6%, 50%);
+    --divider: hsl(240, 5%, 91%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    transition: 300ms;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 12px;
+    font-family: "Kumbh Sans", sans-serif;
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    display: grid;
+    place-items: center;
+    line-height: 1.5;
+    padding: 4rem 0;
+    @media screen and (max-width: 500px) {
+        padding: 10rem 0;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+svg {
+    display: inline-block;
+}
+
+// CARD
+
+.card {
+    min-height: 60vh;
+    background: white;
+    padding: 3rem;
+    border-radius: 1.5rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    overflow: hidden;
+
+    @media screen and (max-width: 500px) {
+        grid-template-columns: 1fr;
+        overflow: unset;
+        padding: 8rem 2rem 2rem 2rem;
+    }
+
+    &__img {
+        position: relative;
+        @media screen and (max-width: 500px) {
+            position: absolute;
+        }
+    }
+
+    &__illustration {
+        height: 100%;
+    }
+
+    &__pattern {
+        position: absolute;
+        width: 130%;
+        top: -3rem;
+        left: -48%;
+
+        @media screen and (max-width: 500px) {
+            top: -80%;
+            left: 50%;
+            width: 75%;
+            transform: translateX(-50%);
+        }
+    }
+
+    &__woman {
+        width: 110%;
+        position: absolute;
+        top: 50%;
+        left: -35%;
+        transform: translate(0, -50%);
+        @media screen and (max-width: 500px) {
+            width: 70%;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, -60%);
+        }
+    }
+    &__box {
+        position: absolute;
+        top: 11rem;
+        left: -5.7rem;
+        transform: scale(0.8);
+        z-index: 2;
+        @media screen and (max-width: 500px) {
+            top: -5rem;
+            left: 0;
+            transform: scale(0.6);
+        }
+    }
+
+    &__title {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        color: var(--primaryBlue);
+        @media screen and (max-width: 500px) {
+            text-align: center;
+        }
+    }
+}
+
+.wrapper {
+    position: relative;
+    width: 60%;
+    @media screen and (max-width: 500px) {
+        width: 85%;
+    }
+}
+
+.item {
+    width: 90%;
+    border-bottom: 1px solid var(--divider);
+    padding: 0.9rem 0;
+    height: max-content;
+    color: var(--grayBlue-1);
+    @media screen and (max-width: 500px) {
+        width: 100%;
+    }
+    &__label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 15px;
+        margin-bottom: 0.8rem;
+        cursor: pointer;
+        @media screen and (max-width: 500px) {
+            font-size: 12px;
+        }
+
+        svg {
+            width: 15px;
+            height: 15px;
+            transform-origin: top;
+        }
+    }
+
+    &__info {
+        color: var(--grayBlue-2);
+        transform: scaleY(0);
+        height: 0;
+        transform-origin: top;
+    }
+
+    &__check {
+        display: none;
+    }
+
+    &__check:checked + label {
+        font-weight: bold;
+    }
+
+    &__check:checked + label svg {
+        transform: rotateZ(180deg);
+    }
+
+    &__check:checked + label + p {
+        transform: scaleY(1);
+        height: max-content;
+    }
+}
